@@ -1,0 +1,42 @@
+plugins {
+    id 'maven-publish'
+}
+group   = "io.github.hotpad100c"
+version = "1.0.0"
+archivesBaseName = "ryansrenderingkit"
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            // JAR
+            artifact("../build/libs/ryansrenderingkit-${version}.jar")
+
+            pom {
+                name = "Ryan's RenderingKit"
+                description = "A powerful rendering utility library for Fabric"
+                url = "https://github.com/hotpad100c/ryansrenderingkit"
+                licenses {
+                    license {
+                        name = "MIT"
+                        url = "https://opensource.org/licenses/MIT"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "hotpad100c"
+                        name = "Ryan100c"
+                    }
+                }
+                scm {
+                    url = "https://github.com/hotpad100c/ryansrenderingkit"
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir("repo")
+        }
+    }
+}
